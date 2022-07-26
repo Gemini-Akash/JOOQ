@@ -24,20 +24,20 @@ public class StudentRepo {
     public StudentRepo(DSLContext jooq) {
         this.jdbcMapper = JdbcMapperFactory.
                 newInstance().
-                addKeys("id", "books_id").
+                addKeys("id","book_id").
                 newMapper(Student.class);
 
         this.jooq = jooq;
     }
 
     public List<Student> findAll() {
-        Result<Record> query = jooq.fetch("select student.id,student.name,books.name " +
+        Result<Record> query = jooq.fetch("select student.id,student.name,books.id as book_id,books.name as book_name " +
                 "from student " +
                 "LEFT JOIN books " +
                 "ON books.student_id = student.id " +
                 "ORDER BY student.id");
 
-        System.out.println(query.stream().collect(Collectors.toList()));
+        System.out.println(query);
 
         return transformQueryIntoList(query);
     }

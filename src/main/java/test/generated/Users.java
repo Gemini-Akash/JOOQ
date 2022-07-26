@@ -11,9 +11,11 @@ import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
+import test.generated.tables.Books;
 import test.generated.tables.Course;
 import test.generated.tables.Files;
 import test.generated.tables.HibernateSequence;
+import test.generated.tables.Student;
 import test.generated.tables.User;
 import test.generated.tables.UserMaster;
 
@@ -32,6 +34,11 @@ public class Users extends SchemaImpl {
     public static final Users USERS = new Users();
 
     /**
+     * The table <code>users.books</code>.
+     */
+    public final Books BOOKS = Books.BOOKS;
+
+    /**
      * The table <code>users.course</code>.
      */
     public final Course COURSE = Course.COURSE;
@@ -45,6 +52,11 @@ public class Users extends SchemaImpl {
      * The table <code>users.hibernate_sequence</code>.
      */
     public final HibernateSequence HIBERNATE_SEQUENCE = HibernateSequence.HIBERNATE_SEQUENCE;
+
+    /**
+     * The table <code>users.student</code>.
+     */
+    public final Student STUDENT = Student.STUDENT;
 
     /**
      * The table <code>users.user</code>.
@@ -72,9 +84,11 @@ public class Users extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
+            Books.BOOKS,
             Course.COURSE,
             Files.FILES,
             HibernateSequence.HIBERNATE_SEQUENCE,
+            Student.STUDENT,
             User.USER,
             UserMaster.USER_MASTER);
     }

@@ -4,9 +4,11 @@
 package test.generated;
 
 
+import test.generated.tables.Books;
 import test.generated.tables.Course;
 import test.generated.tables.Files;
 import test.generated.tables.HibernateSequence;
+import test.generated.tables.Student;
 import test.generated.tables.User;
 import test.generated.tables.UserMaster;
 
@@ -16,6 +18,11 @@ import test.generated.tables.UserMaster;
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>users.books</code>.
+     */
+    public static final Books BOOKS = Books.BOOKS;
 
     /**
      * The table <code>users.course</code>.
@@ -31,6 +38,11 @@ public class Tables {
      * The table <code>users.hibernate_sequence</code>.
      */
     public static final HibernateSequence HIBERNATE_SEQUENCE = HibernateSequence.HIBERNATE_SEQUENCE;
+
+    /**
+     * The table <code>users.student</code>.
+     */
+    public static final Student STUDENT = Student.STUDENT;
 
     /**
      * The table <code>users.user</code>.

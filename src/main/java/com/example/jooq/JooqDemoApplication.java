@@ -2,6 +2,7 @@ package com.example.jooq;
 
 import com.example.jooq.model.Student;
 import com.example.jooq.repository.StudentRepo;
+import com.example.jooq.repository.StudentRepoWithCodeGen;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
@@ -33,12 +34,10 @@ public class JooqDemoApplication {
 		// PreparedStatement and ResultSet are handled by jOOQ, internally
 		try (Connection conn = DriverManager.getConnection(url, userName, password)) {
 			DSLContext create = DSL.using(conn, SQLDialect.MYSQL);
-
 			StudentRepo studentRepo =new StudentRepo(create);
 			List<Student> list =studentRepo.findAll();
-			for (Student s:list) {
-				System.out.println("name "+ s.getName()+" "+ "id "+s.getId()+" Books_id "+s.getBooks());
-			}
+
+			System.out.println(list);
 
 
 //			Result<Record> result = create.select().from(FILES).fetch();
