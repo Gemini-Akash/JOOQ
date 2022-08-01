@@ -1,5 +1,6 @@
 package com.example.jooq;
 
+import com.example.jooq.model.Books;
 import com.example.jooq.model.Student;
 import com.example.jooq.repository.StudentRepo;
 import com.example.jooq.repository.StudentRepoWithCodeGen;
@@ -16,7 +17,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.List;
 
-import static test.generated.Tables.FILES;
+import static test.generated.Tables.*;
+import static test.generated.Tables.BOOKS;
 
 @SpringBootApplication
 public class JooqDemoApplication {
@@ -34,8 +36,18 @@ public class JooqDemoApplication {
 		// PreparedStatement and ResultSet are handled by jOOQ, internally
 		try (Connection conn = DriverManager.getConnection(url, userName, password)) {
 			DSLContext create = DSL.using(conn, SQLDialect.MYSQL);
-			StudentRepo studentRepo =new StudentRepo(create);
-			List<Student> list =studentRepo.findAll();
+			StudentRepoWithCodeGen studentRepoWithCodeGen =new StudentRepoWithCodeGen(create);
+//			StudentRepo studentRepo =new StudentRepo(create);
+			List<?> list =studentRepoWithCodeGen.oneToMany(
+					STUDENT,
+					BOOKS,
+					STUDENT.ID,
+					STUDENT.NAME,
+					BOOKS.ID,
+					BOOKS.NAME,
+					BOOKS.STUDENT_ID,
+					Student.class,
+					"books");
 
 			System.out.println(list);
 
