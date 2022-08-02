@@ -8,21 +8,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Books {
+@NoArgsConstructor
+public class Department {
 
-    private int id;
-    private String name;
-
-
-
+    private int d_id;
+    private  String d_name;
 
     @Override
     public String toString() {
-        return "Books{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "Department{" +
+                "id=" + d_id +
+                ", name='" + d_name + '\'' +
                 '}';
     }
 }

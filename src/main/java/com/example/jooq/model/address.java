@@ -10,17 +10,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Books {
+public class address {
 
     private int id;
     private String name;
 
-
-
-
     @Override
     public String toString() {
-        return "Books{" +
+        return "address{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

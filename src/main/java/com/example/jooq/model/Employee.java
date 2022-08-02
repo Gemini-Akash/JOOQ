@@ -12,19 +12,18 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Employee {
 
-   private int id;
-    private String name;
-    private List<Books> books;
-
+    private int e_id;
+    private String e_name;
+    private List<Department> department;
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", books=" + books +
+        return "Employee{" +
+                "e_id=" + e_id +
+                ", e_name='" + e_name + '\'' +
+                ", department=" + department +
                 '}';
     }
 }
