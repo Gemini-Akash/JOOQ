@@ -1,7 +1,6 @@
 package com.example.jooq;
 
-import com.example.jooq.model.Books;
-import com.example.jooq.model.Student;
+import com.example.jooq.model.*;
 import com.example.jooq.repository.StudentRepo;
 import com.example.jooq.repository.StudentRepoWithCodeGen;
 import org.jooq.DSLContext;
@@ -51,6 +50,40 @@ public class JooqDemoApplication {
 
 			System.out.println(list);
 
+			List<?> list1 =studentRepoWithCodeGen.manyToMany(
+
+					MOVIE,
+					CATEGORY,
+					MOVIE_CATEGORY_RL,
+
+					MOVIE.MOVIE_ID,
+					MOVIE.NAME,
+					CATEGORY.CATEGORY_ID,
+					CATEGORY.NAME,
+					MOVIE_CATEGORY_RL.MOVIE_ID,
+					MOVIE_CATEGORY_RL.CATEGORY_ID,
+
+
+					"categories",
+					movies.class);
+			studentRepoWithCodeGen.manyToMany1(
+
+					MOVIE,
+					CATEGORY,
+					MOVIE_CATEGORY_RL,
+
+					MOVIE.MOVIE_ID,
+					MOVIE.NAME,
+					CATEGORY.CATEGORY_ID,
+					CATEGORY.NAME,
+					MOVIE_CATEGORY_RL.MOVIE_ID,
+					MOVIE_CATEGORY_RL.CATEGORY_ID,
+
+
+					"categories",
+					movies.class);
+
+			System.out.println(list1);
 
 //			Result<Record> result = create.select().from(FILES).fetch();
 //

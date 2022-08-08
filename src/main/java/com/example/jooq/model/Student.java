@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.List;
 
@@ -12,10 +13,12 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+//
 public class Student {
 
    private int id;
     private String name;
+
     private List<Books> books;
 
 

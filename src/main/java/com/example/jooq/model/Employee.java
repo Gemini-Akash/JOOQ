@@ -12,6 +12,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+
+//department_d_id
 public class Employee {
 
     private int e_id;

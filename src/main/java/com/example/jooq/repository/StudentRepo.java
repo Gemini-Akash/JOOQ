@@ -21,6 +21,9 @@ public class StudentRepo {
     private final JdbcMapper<Student> jdbcMapper;
     private final DSLContext jooq;
 
+    OneToMany oneToMany = new OneToMany();
+
+
     public StudentRepo(DSLContext jooq) {
         this.jdbcMapper = JdbcMapperFactory.
                 newInstance().
@@ -30,21 +33,25 @@ public class StudentRepo {
         this.jooq = jooq;
     }
 
+
+
     public List<Student> findAll() {
-        Result<Record> query = jooq.fetch("select student.id,student.name,books.id as book_id,books.name as book_name " +
+
+        Result<Record> query = jooq.fetch("select student.id,student.name,books.id as books_id,books.name as books_name " +
                 "from student " +
                 "LEFT JOIN books " +
                 "ON books.student_id = student.id " +
                 "ORDER BY student.id");
 
-        System.out.println(query);
+
+        System.out.println(query.intoResultSet());
 
         return transformQueryIntoList(query);
     }
 
     private List<Student> transformQueryIntoList(Result<Record> query) {
         List<Student> list = null;
-        try (ResultSet rs = query.intoResultSet()) {
+        try (ResultSet rs =query.intoResultSet()) {
             list= jdbcMapper.stream(rs).collect(Collectors.toList());
         } catch (SQLException ex) {
             ex.printStackTrace();
